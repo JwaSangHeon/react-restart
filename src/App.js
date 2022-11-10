@@ -1,6 +1,7 @@
 import React from "react";
 import Hello from "./components/Hello";
 import Wrapper from "./components/Wrapper";
+import Counter from "./components/Counter";
 
 function App() {
   const name = "SH";
@@ -8,7 +9,7 @@ function App() {
   return (
     <Wrapper>
       <Hello name={name} color={color} isStar />
-      <Hello color={color} />
+      <Counter />
     </Wrapper>
   );
 }
