@@ -7,7 +7,7 @@ function App() {
   const color = "skyblue";
   return (
     <Wrapper>
-      <Hello name={name} color={color} />
+      <Hello name={name} color={color} isStar />
       <Hello color={color} />
     </Wrapper>
   );
