@@ -1,22 +1,43 @@
 import React, { useState } from "react";
 
 const InputSample = () => {
-  const [word, setWord] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    nickname: "",
+  });
+  const { username, nickname } = user;
 
   const onChangeInput = (e) => {
-    setWord(e.target.value);
+    const { name, value } = e.target;
+    console.log(name, value);
+    setUser({ ...user, [name]: value });
   };
 
   const onClear = () => {
-    setWord("");
+    setUser({
+      username: "",
+      nickname: "",
+    });
   };
 
   return (
     <div>
-      <input value={word} onChange={onChangeInput} />
+      <input
+        name="username"
+        placeholder="이름"
+        onChange={onChangeInput}
+        value={username}
+      />
+      <input
+        name="nickname"
+        placeholder="닉네임"
+        onChange={onChangeInput}
+        value={nickname}
+      />
       <button onClick={onClear}>초기화</button>
       <div>
-        <b>값 : {word}</b>
+        <b>값: </b>
+        {username} ({nickname})
       </div>
     </div>
   );
