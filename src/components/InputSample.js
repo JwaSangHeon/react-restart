@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const InputSample = () => {
   const [user, setUser] = useState({
     username: "",
     nickname: "",
   });
+
+  const nameInput = useRef();
+
   const { username, nickname } = user;
 
   const onChangeInput = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+
     setUser({ ...user, [name]: value });
   };
 
@@ -18,6 +21,7 @@ const InputSample = () => {
       username: "",
       nickname: "",
     });
+    nameInput.current.focus();
   };
 
   return (
@@ -27,6 +31,7 @@ const InputSample = () => {
         placeholder="이름"
         onChange={onChangeInput}
         value={username}
+        ref={nameInput}
       />
       <input
         name="nickname"
