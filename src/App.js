@@ -2,6 +2,7 @@ import React from "react";
 import Hello from "./components/Hello";
 import Wrapper from "./components/Wrapper";
 import Counter from "./components/Counter";
+import InputSample from "./components/InputSample";
 
 function App() {
   const name = "SH";
@@ -10,6 +11,7 @@ function App() {
     <Wrapper>
       <Hello name={name} color={color} isStar />
       <Counter />
+      <InputSample />
     </Wrapper>
   );
 }
