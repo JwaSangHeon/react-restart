@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const User = ({ users, onRemove, onLive }) => {
+  useEffect(() => {
+    console.log("등장");
+    console.log(users);
+    return () => {
+      console.log("users 가 바뀌기전 ....");
+      console.log(users);
+    };
+  }, [users]);
   return (
     <div>
       {users.map((user) => {
