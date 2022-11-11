@@ -1,7 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
 import Wrapper from "./components/Wrapper";
 import UserList from "./components/UserList";
 import CreateUser from "./components/CreateUser";
+
+const countActiveUsers = (users) => {
+  console.log("세는 중...");
+  return users.filter((user) => user.active).length;
+};
 
 function App() {
   const [users, setUsers] = useState([
@@ -48,6 +53,8 @@ function App() {
       )
     );
   };
+
+  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <Wrapper>
       <CreateUser
@@ -57,6 +64,7 @@ function App() {
         onCreate={onCreate}
       />
       <UserList users={users} onRemove={onRemove} onLive={onLive} />
+      <div>활성사용자 수 : {count}</div>
     </Wrapper>
   );
 }
