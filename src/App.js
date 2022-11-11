@@ -1,4 +1,10 @@
-import React, { useRef, useState, useMemo, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+} from "react";
 import Wrapper from "./components/Wrapper";
 import UserList from "./components/UserList";
 import CreateUser from "./components/CreateUser";
@@ -23,12 +29,15 @@ function App() {
   });
   const { username, email } = user;
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-  };
+  const onChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setUser({ ...user, [name]: value });
+    },
+    [user]
+  );
 
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const user = {
       id: nextId.current,
       username,
@@ -40,19 +49,25 @@ function App() {
       email: "",
     });
     nextId.current += 1;
-  };
+  }, [email, username, users]);
 
-  const onRemove = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-  };
+  const onRemove = useCallback(
+    (id) => {
+      setUsers(users.filter((user) => user.id !== id));
+    },
+    [users]
+  );
 
-  const onLive = (id) => {
-    setUsers(
-      users.map((user) =>
-        user.id === id ? { ...user, active: !user.active } : user
-      )
-    );
-  };
+  const onLive = useCallback(
+    (id) => {
+      setUsers(
+        users.map((user) =>
+          user.id === id ? { ...user, active: !user.active } : user
+        )
+      );
+    },
+    [users]
+  );
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
