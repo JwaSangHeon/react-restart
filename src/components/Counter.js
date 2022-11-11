@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "PLUS":
+      return state + 1;
+    case "MINUS":
+      return state - 1;
+    default:
+      return state;
+  }
+};
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  const [count, dispatch] = useReducer(reducer, 0);
   const onClickPlus = () => {
-    setCount((prev) => prev + 1);
+    dispatch({ type: "PLUS" });
   };
   const onClickMinus = () => {
-    setCount((prev) => prev - 1);
+    dispatch({ type: "MINUS" });
   };
   return (
     <div>

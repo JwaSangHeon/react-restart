@@ -2,7 +2,7 @@ import React from "react";
 
 const CreateUser = ({ onChange, username, email, onCreate }) => {
   return (
-    <div>
+    <>
       <input
         name="username"
         placeholder="계정명"
@@ -16,7 +16,7 @@ const CreateUser = ({ onChange, username, email, onCreate }) => {
         value={email}
       />
       <button onClick={onCreate}>등록</button>
-    </div>
+    </>
   );
 };
 

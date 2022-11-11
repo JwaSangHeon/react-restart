@@ -1,10 +1,10 @@
 import React from "react";
 import User from "./User";
 
-const UserList = ({ users, onRemove, onLive }) => {
+const UserList = ({ onRemove, onLive }) => {
   return (
     <>
-      <User users={users} onRemove={onRemove} onLive={onLive} />
+      <User onRemove={onRemove} onLive={onLive} />
     </>
   );
 };

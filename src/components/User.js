@@ -1,8 +1,11 @@
 import React from "react";
+import { useRecoilState } from "recoil";
+import { usersAtom } from "./atom";
 
-const User = ({ users, onRemove, onLive }) => {
+const User = ({ onRemove, onLive }) => {
+  const [users] = useRecoilState(usersAtom);
   return (
-    <div>
+    <>
       {users.map((user) => {
         return (
           <div key={user.id}>
@@ -28,7 +31,7 @@ const User = ({ users, onRemove, onLive }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
