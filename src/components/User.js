@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const User = ({ users, onRemove, onLive }) => {
   return (
@@ -32,4 +32,4 @@ const User = ({ users, onRemove, onLive }) => {
   );
 };
 
-export default User;
+export default React.memo(User);

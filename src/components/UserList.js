@@ -9,4 +9,4 @@ const UserList = ({ users, onRemove, onLive }) => {
   );
 };
 
-export default UserList;
+export default React.memo(UserList);
