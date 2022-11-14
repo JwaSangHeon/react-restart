@@ -1,25 +1,24 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
-import TodoTemplate from "./components/TodoTemplate";
-import TodoHead from "./components/TodoHead";
-import TodoList from "./components/TodoList";
-import TodoCreate from "./components/TodoCreate";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: #e9ecef;
-  }
-`;
+import { Link, Route, Routes } from "react-router-dom";
+import About from "./components/About";
+import Home from "./components/Home";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <TodoTemplate>
-        <TodoHead />
-        <TodoList />
-        <TodoCreate />
-      </TodoTemplate>
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+      </ul>
+      <hr />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </>
   );
 }
